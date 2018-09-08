@@ -1,0 +1,143 @@
+FileSplitter Utility
+--------------------
+
+Start [3 June 2007 :: 3:50 pm]
+
+Developments Upto Vesrion 1.0
+-----------------------------
+- start basic coding in c using 32-bit compiler
+- program logs data to fileSplitterLog.log
+- has loss of data coz we are dropping few bytes out.
+- using the extension .split for the split files and the names like   "__conv_file_a.split"
+- fixed the bug of not being able to generate proper names for the subfiles.
+- Now program logs to fileSplitter.log
+- modified the code so that no amount of data is lost::added a step for outputting the last file as a separate task, ie out of the loop
+- log file tells the file size of the subfiles
+- now calculates the size for the last file using
+lastFileSize = mainFileSize - ((fileSplitCount-1)*subFileSize);
+- created icon and panel images for the FileSplitterUtility the font used is Dark Crystal.
+- Project declared OpenSource[8:00 PM 6/3/2007]
+- log file includes % size of the original file. [8:42 PM 6/3/2007]
+- modified the % calculation for more accuracy.
+- drop the % size displayer, coz it is not necessary. the size is enough itself.
+
+Version 1.0 in C++
+- found that an argument with spaces can be given over the command line if enclosed in a pair of "s. this should make it easy when creating the HTA interface.[6:37 PM 6/4/2007]
+- completed Ist session coding in C++ for splitting.
+- much number of bugs seem to appear.[8:45 PM 6/4/2007]
+- fixed a serious error of using cstrcpy instead of strcat [8:55 PM 6/4/2007]
+- added getIntVal() to get the integer value from a string [9:08 PM 6/4/2007]
+- the program writes outr a good log and does split the source file into the parts as done by the original c file.
+- fixed all bugs for splitting the main file with the subfiletemplate  name specified by the user.
+- log writer writes the index erroriously. will fix it tomorrow. [9:28 PM 6/4/2007]
+- couldnt wait, fixed that bug, modified the log for a better format. v1520 [10:18 PM 6/4/2007]
+
+- program now writes the index file, modified the codes. 1522 [3:20 PM 6/5/2007]
+- more fields to the index header, 1523 [3:27 PM 6/5/2007]
+- no of parameters set to 7, 1524 [3:37 PM 6/5/2007]
+- prog now reads infn from the index file if in J 1525 [3:45 PM 6/5/2007]
+- in join, were trying to write the initial log details in a join command, done 1526 [4:24 PM 6/5/2007]
+- openNextSubFile() uses an argument to distinguish btw SPLIT & Join 1527 [4:17 PM 6/5/2007]
+- fixed major bug in openNextSubFile() 1528 [4:28 PM 6/5/2007]
+- joinLogDetails() now gets the original file anem by combining with the extension read from the index file, 1529 [4:36 PM 6/5/2007]
+- renamed getNUmVal() to parseInt() because thatz what the fn does. 1530 [8:42 PM 6/5/2007]
+- added fn to print trailer to the log file in the join module. 1531 [8:54 PM 6/5/2007]
+
+- started work on the GUI. The Flash Header [12:34 PM 6/6/2007]
+- completed graphical work of header 1532 [1:31 PM 6/6/2007]
+- created HTA for the UI [2:30 PM 6/6/2007]
+- completed the program's header 1532 [7:16 PM 6/6/2007]
+- starting code for join, but interesting bug shows up [7:54 PM 6/6/2007]
+- minor bugfix, carelessness, using wb instead of ab 1533 [8:11 PM 6/6/2007]
+- major bugfixed 1534 [8:15 PM 6/6/2007]
+- formatted the source code 1535 [8:27 PM 6/6/2007]
+- the join seems to work but hashes do not seem to match [8:32 PM 6/6/2007]
+- there seems to be a small bug in the spliter [8:45 PM 6/6/2007]
+- fix some major bugs and now the hashes match 1600[8:49 PM 6/6/2007]
+- in joinLogWriter() changed entry Original file Name to OutputFileName() 1601[8:53 PM 6/6/2007]
+- completed the GUI part of the program, layout bg designed in fw, html elemnst assembled in dw. 1610 [11:04 PM 6/6/2007]
+
+- more work on the HTA UI, more javascript code to enhance user experience, 1611 [6:57 PM 6/7/2007]
+
+- added fileCount text box in UI 1612
+- coding javascript command line parameter making, 1613 [9:31 PM 6/8/2007]
+- completed the jscript, 1614 [9:37 PM 6/8/2007]
+- program works successfully from the javascript commmand line. 1615 [9:39 PM 6/8/2007]
+- debugging join, bug in logWriter() [9:51 PM 6/8/2007]
+- some Error with reopening the output file to find out the size. so that code is removed 1615 [10:03 PM 6/8/2007]
+- program tested with full interface and no errors, 1616 [10:08 PM 6/8/2007]
+
+- added code to parseInt() to ignore values in a string that may not be numbers, 1700 [7:03 PM 6/10/2007]
+- changed the format of the commandLineParameters to -S for split and -J for join, 1710 [7:18 PM 6/10/2007]
+- formatted the logger output, 1715 [7:19 PM 6/10/2007]
+
+- modified js to clear the txt boxes after it is hidden, 1717 [7:40 PM 6/11/2007]
+- did how_to.html for the help [8:15 PM 6/11/2007]
+
+
+- did research on CRC-32 for files using partof the implementation from Mark Nelson's article 'File verification Using CRC' published in Dr. Dobb's Journal May 1992. 1800[8:25 PM 6/19/2007]
+- converted the C code for CRC32 to C++ 1810 [8:48 PM 6/19/2007]
+- added entry into index file header for storing the CRC of the file 1812 [9:27 PM 6/19/2007]
+- moving the object for FileCRC32 around. 1815 [9:38 PM 6/19/2007]
+- added fn calcCRC32() in the main class, 1816 [9:40 PM 6/19/2007]
+- when splitting, the CRC is calculated after successfully openinng the main file, 1817 [9:45 PM 6/19/2007]
+- created verifyCRC() to check for CRC, 1818 [9:57 PM 6/19/2007]
+- first compile and run - error, 1819 [10:00 PM 6/19/2007]
+- after a lot of debugging, error found in calcCRC() 1820 [10:06 PM 6/19/2007]
+- modified calcFileCRC(); 1821 [10:07 PM 6/19/2007]
+- still same error 1822 [10:09 PM 6/19/2007]
+- error mioght happen when the file is already open and trying to open it 1825 [10:54 PM 6/19/2007]
+- the bug was a small mistake in declaring te file variable in the FileCRC32 class, the constructor had a new version that was not available to all the members of the class, corrected it. 1830 [11:00 PM 6/19/2007]
+- correctly writes out the logger with the CRC in hex format, 1831 [11:07 PM 6/19/2007]
+- made the crc value display in uppercase using formatting flags for logger="logger.setf(ios::uppercase);logger<<hex<<__fnCall()" 1835 [11:16 PM 6/19/2007]
+- fomatting to logger for properly displaying CRC32 codes 1837 [11:18 PM 6/19/2007]
+- an old problem of destructor not being called comes up... 1838 [11:25 PM 6/19/2007]
+
+- forgot to unset hex flag in createSubfiles(), so changed that. 1839 [10:14 PM 6/20/2007]
+- minor bugfix in jonSubFiles(). 1840 [10:37 PM 6/20/2007]
+- successfully atched the CRCs of the original file from he index and the output file after a number of bugs. the main bug was trying to calculate the CRC when the main file was not closed, so changed the closing of the main file out of the destructor, 1851 [11:04 PM 6/20/2007]
+- logger shows the expected final CRC32 of the outputfile in the logfile, 1852 [11:09 PM 6/20/2007]
+
+- found a bug that the customOutputFolder is not taken. So trying to fix that, 1853 [8:03 AM 6/25/2007]
+
+- program gets init time and logs it, 1900 [12:47 PM 6/25/2007]
+- program gets finish time & logs it, 1901 [1:03 PM 6/25/2007]
+- program gets the time of exectution, from constructor to destructor and writes to log, 1902 [1:06 PM 6/25/2007]
+- formatted the output from formatTimeString() had a little doubt whether finding difference between the struct times would be possible to make, 1903 [1:08 PM 6/25/2007]
+- for improving the efficiency of the pgm, we are trying to implement the code for reading blocks of data rather than individual bytes, 1910 [2:06 PM 6/25/2007]
+- renamed i in the createSubFiles() main loop to a more descriptive totalBytes and type to unsigned long, 1911 [2:10 PM 6/25/2007]
+- pgm is running in an infinite loop?? 1912 [2:16 PM 6/25/2007]
+- pgm is doing errors in output,1913 [2:30 PM 6/25/2007]
+- finally the bug is fixed, 1915 [2:35 PM 6/25/2007]
+- the lastSubFile is missing some bytes, caused due to using old version of buffer with same name as the new one. changed. 1916 [9:49 PM 6/25/2007]
+- now fileCRCs do not match, 1917 [9:50 PM 6/25/2007]
+- the hashes do not6 match up for the final part, so we traced out the bug, in the lastSubFileCreating part 1918 [10:10 PM 6/25/2007]
+- files dont hash coz 1 byte was lost in writing the lastSubFile, corrected, 1919 [10:48 PM 6/25/2007]
+- blockreading improves efficiency and is faster. new version of createSubFiles is 71% faster than the old version of joinSplitFiles(). efficiency can further be improved by blockreading for the last part of the subfile 1920 [10:52 PM 6/25/2007]
+- completed block reading for the final file, improves speed of the pgm further now splitting is 86% faster than joining, our testing platform details given below 1925 [11:30 PM 6/25/2007]
+
+# Processor	-	Intel Pentium 4 1.72 Ghz
+# Memory	-	256Mb DDR 400Mhz FSB
+# HardDisk	-	Samsung 40GB 7200rpm
+# OS		-	Windows XP Professional SP2 + Jan 2007 patches
+# Free Memory	-	157 Mb
+# Num Running proc-	17
+#
+Test Results Phase I (50% optimisation)
+------------
+# testfile type	-	binary
+# testfile size	-	70Mb
+# numSubfiles	-	7
+# totalSplitTime-	09.21 S
+# totalJoinTime	-	28.20s
+
+- processDuration may show up incorrect data, so to fixed that possibility that 1928 [12:30 AM 6/26/2007]
+
+- designed graphics for the installer using macromedia.Fw.8 1930 [8:54 PM 6/27/2007]
+
+- modified the scripts to check for invalid output dirs, 1932 [8:27 AM 6/30/2007]
+- modified the join code to read in blocks of 512 data for optimality. 1933 [9:35 AM 6/30/2007]
+- some error, close but some 2k bytes are missing. 1934 [9:52 AM 6/30/2007]
+- finally, fix the join part after rearranging the loop to read from split files to write into the outputfile, 1935 [10:30 AM 6/30/2007]
+- splitting is much faster than joining, optimised join 1936 [10:33 AM 6/30/2007]
+- Bug occurs if numSplitFiles is larger than 100. Fixed by checking in top level script, no change to source code. [7:56 PM 11/18/2008]
