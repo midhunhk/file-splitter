@@ -1,5 +1,5 @@
 /*	FileSplitter_in_c.c - splits a given source file into subparts
- *	Author:Midhun Harikumar (midhunhk@gmail.com)
+ *	Author:Midhun Harikumar
  *      (c)2007 Centrum inc Software Solutions
  *
  *	$ Version 1.0 | 3 - June - 2007
